@@ -45,15 +45,16 @@
     {
         historial = h;
     }
-    void calc::setCurrentOperation(char op[])
+    void calc::setCurrentOperation(char op[], short sizeChar)
     {
-        int sizeChar = sizeof(op) / sizeof(op[0]);
         currentOperation = new char[sizeChar];
 
         std::cout << "\n En la función \n Tamaño: " << sizeChar;
 
-        for(int a = 0; a < sizeChar; a++) std::cout << "\n Current2[" << a << "]: " << currentOperation[a];
         currentOperation = op;
+
+        for(int a = 0; a < sizeChar; a++) std::cout << "\n Current2[" << a << "]: " << currentOperation[a];
+
     }
     void calc::setCurrentOperationSize(short sizeOp)
     {
@@ -87,15 +88,15 @@
     }
     bool calc::splitOperations()
     {
-        /*std::cout << "Split operations: \n ";
+        std::cout << "Split operations: \n ";
 
         char** listOp;
         short contCharOp = 0, sizeListOp = 0, sizeListOp2 = 0, contSigns = 0;
-        short contListOp = 0, beginNewOp = 0, sizeOp = getCurrentOperationSize();
+        short contListOp = 0, since = 0, until = 0, sizeOp = getCurrentOperationSize();
 
         std::cout << "El tamaño del array de la operación actual es: " << sizeOp << "\n";
 
-        //
+        // Verificamos cuántos signos hay
         for(int a = 0; a < sizeOp; a++)
         {
             std::cout << "\nEstamos en " << a << ", valor: " << currentOperation[a];
@@ -106,7 +107,7 @@
 
         std::cout << "\nHay signos: " << contSigns << "\n";
 
-        sizeListOp = contSigns * 2 + 1;
+        sizeListOp = contSigns * 2 + 1; // Establecemos el tamaño de la lista
 
         std::cout << "\nTamaño de la listaOp: " << sizeListOp << "\n";
 
@@ -116,28 +117,77 @@
             do
             {
                 std::cout << "\n Entramos al do while. current[contCharOp] vale: " << currentOperation[contCharOp] << "\n";
-                if(currentOperation[contCharOp] == 'x')
+                if(currentOperation[contCharOp] != 'x' && currentOperation[contCharOp] != '/' && currentOperation[contCharOp] != '-' && currentOperation[contCharOp] != '+')
                 {
-                    /* Cuando encontramos un signo, empezamos a guardar todo lo anterior encontrado *
-                    listOp[contListOp] = new char[sizeListOp2];
-                    for(short a = 0; beginNewOp < sizeListOp2; beginNewOp++, a++)
-                    {
-                        std::cout << "\n begin=" << beginNewOp << ", Guardamos " << currentOperation[beginNewOp];
-                        listOp[sizeListOp][a] = currentOperation[beginNewOp]; // Guardamos
-                    }
-                    contListOp++;
+                    sizeListOp2++; // Contabilizamos cuántos valores se guardarán
+                    std::cout << "\n SizeListOp2 vale: " << sizeListOp2 << "\n";
                 }
                 else
                 {
-                    sizeListOp2++;
-                    std::cout << "\n SizeListOp2 vale: " << sizeListOp2 << "\n";
+                    // Guardamos los valores encontrados
+                        std::cout << "\n Tocó un signo: " << currentOperation[contCharOp] << "\n";
+
+                        std::cout << "\n La nueva sublista tendrá elementos: " << sizeListOp2 << "\n";
+
+                        listOp[contListOp] = new char[sizeListOp2];
+
+                        until = since + sizeListOp2;
+
+                        std::cout << "\n desde: " << since << ", hasta: " << until << "\n";
+
+                        for(short a = 0; since < until ; a++)
+                        {
+                            std::cout << "\n since=" << since << ", Guardamos " << currentOperation[since];
+
+                            listOp[contListOp][a] = currentOperation[since]; // Guardamos
+                            since++;
+                        }
+                    // Guardamos el signo
+                        contListOp++;
+
+                        std::cout << "\n Guardamos el signo en listaOp[" << contListOp << "][0] = " << currentOperation[since];
+
+                        listOp[contListOp] = new char[1];
+                        listOp[contListOp][0] = currentOperation[since];
+                        since++;
+                        contListOp++;
+
+                    // Reiniciamos el valor de la sublista
+                        sizeListOp2 = 0;
                 }
                 contCharOp++;
+
+                std::cout << "\n LLegamos al final del d-while, contCharOp: " << contCharOp << ", sizeOp: " << sizeOp << "\n";
+
+                // Verificamos si se llegó al final y guardamos lo último
+                    if(contCharOp == sizeOp)
+                    {
+                        // Guardamos los valores encontrados
+                            std::cout << "\n--- Se llegó al final" << contCharOp << "\n";
+
+                            std::cout << "\n La nueva sublista tendrá elementos: " << sizeListOp2 << "\n";
+
+                            listOp[contListOp] = new char[sizeListOp2];
+
+                            until = since + sizeListOp2;
+
+                            std::cout << "\n desde: " << since << ", hasta: " << until << "\n";
+
+                            for(short a = 0; since < until ; a++)
+                            {
+                                std::cout << "\n since=" << since << ", Guardamos " << currentOperation[since];
+
+                                listOp[contListOp][a] = currentOperation[since]; // Guardamos
+                                since++;
+                            }
+                    }
+
             }while(contCharOp < sizeOp);
 
-            std::cout << "Se guardó: \n";
+            std::cout << "\nSe guardó: \n";
+
             for(short a = 0; a < sizeListOp; a++)
-                    std::cout << "listOp[" << a << "]: " << listOp[a] << "\n";
+                std::cout << "listOp[" << a << "]: " << listOp[a] << "\n";
 
 
             /*while(contChartOp < sizeOp)

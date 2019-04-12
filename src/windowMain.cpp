@@ -350,7 +350,7 @@ void windowMain::on_click_iqual()
 
         for(int a = 0; a < sizeChar; a++) std::cout << "\n Current[" << a << "]: " << currentTextChar[a];
 
-    calcMain1.setCurrentOperation(currentTextChar);
+    calcMain1.setCurrentOperation(currentTextChar, sizeChar);
 
     calcMain1.setCurrentOperationSize(sizeChar);
 

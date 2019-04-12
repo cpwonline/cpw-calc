@@ -20,7 +20,7 @@ class calc
             void setResult(float r);
             void setBuffer(float b);
             void setHistorial(float h);
-            void setCurrentOperation(char op[]);
+            void setCurrentOperation(char op[], short sizeChar);
             void setCurrentOperationSize(short sizeOp);
 
             float sum(float a, float b);
