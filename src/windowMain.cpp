@@ -339,33 +339,24 @@ void windowMain::on_click_iqual()
     short sizeChar = txtCalcs.get_text_length();
     Glib::ustring currentText = txtCalcs.get_text();
 
-    std::cout << "El tamaño es: " << sizeChar << "\n\n";
-
     char currentTextChar[sizeChar];
 
     for(int a = 0; a < sizeChar; a++) currentTextChar[a] = currentText[a];
 
-    // Impresión
-        std::cout << "Current: " << currentTextChar << "\n";
+    // Store the Current Operation
+        calcMain1.setCurrentOperation(currentTextChar, sizeChar);
+        calcMain1.setCurrentOperationSize(sizeChar);
 
-        for(int a = 0; a < sizeChar; a++) std::cout << "\n Current[" << a << "]: " << currentTextChar[a];
-
-    calcMain1.setCurrentOperation(currentTextChar, sizeChar);
-
-    calcMain1.setCurrentOperationSize(sizeChar);
-
-        std::cout << "\nValor de currentOperation: " << calcMain1.getCurrentOperation() << "\n\n";
-        std::cout << "\nTamaño de currentOperation: " << calcMain1.getCurrentOperationSize() << "\n\n";
-
-    if(calcMain1.splitOperations())
-    {
-        //txtCalcs.set_text(calcMain1.convertToChar(calcMain1.getResult()));
-        std::cout << "Retornó true" << "\n";
-    }
-    else
-    {
-        txtCalcs.set_text("Syntax error");
-    }
+    // Split the operations
+        if(calcMain1.splitOperations())
+        {
+            //txtCalcs.set_text(calcMain1.convertToChar(calcMain1.getResult()));
+            std::cout << "Retornó true" << "\n";
+        }
+        else
+        {
+            txtCalcs.set_text("Syntax error");
+        }
 }
 
 void windowMain::on_click_quit()
