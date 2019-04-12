@@ -15,11 +15,13 @@ class calc
             float getBuffer() const;
             float getHistorial() const;
             char* getCurrentOperation() const;
+            short getCurrentOperationSize() const;
 
             void setResult(float r);
             void setBuffer(float b);
             void setHistorial(float h);
             void setCurrentOperation(char op[]);
+            void setCurrentOperationSize(short sizeOp);
 
             float sum(float a, float b);
             float subtract(float a, float b);
@@ -36,6 +38,7 @@ class calc
         float buffer;
         float historial;
         char* currentOperation;
+        short currentOperationSize;
 };
 
 #endif // CALC_H

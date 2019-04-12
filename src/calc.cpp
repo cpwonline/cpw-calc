@@ -27,6 +27,10 @@
     {
         return currentOperation;
     }
+    short calc::getCurrentOperationSize() const
+    {
+        return currentOperationSize;
+    }
 
 // Setters
     void calc::setResult(float r)
@@ -47,7 +51,15 @@
         currentOperation = new char[sizeChar];
 
         std::cout << "\n En la función \n Tamaño: " << sizeChar;
+
+        for(int a = 0; a < sizeChar; a++) std::cout << "\n Current2[" << a << "]: " << currentOperation[a];
         currentOperation = op;
+    }
+    void calc::setCurrentOperationSize(short sizeOp)
+    {
+        std::cout << "\nEstamos en setCurrentOperationSize, sizeOp: " << sizeOp;
+
+        currentOperationSize = sizeOp;
     }
 
 // Members
@@ -75,25 +87,29 @@
     }
     bool calc::splitOperations()
     {
-        std::cout << "Split operations: \n ";
+        /*std::cout << "Split operations: \n ";
 
         char** listOp;
+        short contCharOp = 0, sizeListOp = 0, sizeListOp2 = 0, contSigns = 0;
+        short contListOp = 0, beginNewOp = 0, sizeOp = getCurrentOperationSize();
 
-        short contCharOp = 0, sizeListOp = 0, contListOp = 0, beginNewOp = 0;
-        bool saveEveryOp = false;
-
-        short sizeOp = sizeof (currentOperation) / sizeof (currentOperation[0]);
         std::cout << "El tamaño del array de la operación actual es: " << sizeOp << "\n";
 
         //
-        short contSigns = 0;
         for(int a = 0; a < sizeOp; a++)
         {
+            std::cout << "\nEstamos en " << a << ", valor: " << currentOperation[a];
+
             if(currentOperation[a] == '+' || currentOperation[a] == '-' || currentOperation[a] == 'x' || currentOperation[a] == '/')
-                contSigns++;
+                {contSigns++;std::cout << " -Signo: " << currentOperation[a];}
         }
 
-        sizeListOp = sizeListOp * 2 + 1;
+        std::cout << "\nHay signos: " << contSigns << "\n";
+
+        sizeListOp = contSigns * 2 + 1;
+
+        std::cout << "\nTamaño de la listaOp: " << sizeListOp << "\n";
+
         listOp = new char*[sizeListOp];
 
         // Vamos guardando valores hasta encontrar un signo
@@ -102,12 +118,12 @@
                 std::cout << "\n Entramos al do while. current[contCharOp] vale: " << currentOperation[contCharOp] << "\n";
                 if(currentOperation[contCharOp] == 'x')
                 {
-                    /* Cuando encontramos un signo, empezamos a guardar todo lo anterior encontrado */
-                    new listOp[contListOp][sizeListOp2];
+                    /* Cuando encontramos un signo, empezamos a guardar todo lo anterior encontrado *
+                    listOp[contListOp] = new char[sizeListOp2];
                     for(short a = 0; beginNewOp < sizeListOp2; beginNewOp++, a++)
                     {
                         std::cout << "\n begin=" << beginNewOp << ", Guardamos " << currentOperation[beginNewOp];
-                        listOp[sizeListOp2][a] = currentOperation[beginNewOp]; // Guardamos
+                        listOp[sizeListOp][a] = currentOperation[beginNewOp]; // Guardamos
                     }
                     contListOp++;
                 }
@@ -120,9 +136,8 @@
             }while(contCharOp < sizeOp);
 
             std::cout << "Se guardó: \n";
-            for(short a = 0; a < (sizeof(listOp) / sizeof(listOp[0])); a++)
-                for(short b = 0; b < (sizeof(listOp[a]) / sizeof(listOp[a][0])); b++)
-                    std::cout << "listOp[" << a << "][" << b << "]: " << listOp[a][b];
+            for(short a = 0; a < sizeListOp; a++)
+                    std::cout << "listOp[" << a << "]: " << listOp[a] << "\n";
 
 
             /*while(contChartOp < sizeOp)

@@ -336,8 +336,11 @@ void windowMain::on_click_iqual()
 {
     calc calcMain1;
 
-    int sizeChar = txtCalcs.get_text_length();
+    short sizeChar = txtCalcs.get_text_length();
     Glib::ustring currentText = txtCalcs.get_text();
+
+    std::cout << "El tamaño es: " << sizeChar << "\n\n";
+
     char currentTextChar[sizeChar];
 
     for(int a = 0; a < sizeChar; a++) currentTextChar[a] = currentText[a];
@@ -349,11 +352,10 @@ void windowMain::on_click_iqual()
 
     calcMain1.setCurrentOperation(currentTextChar);
 
+    calcMain1.setCurrentOperationSize(sizeChar);
+
         std::cout << "\nValor de currentOperation: " << calcMain1.getCurrentOperation() << "\n\n";
-        std::cout << "Buffer: " << calcMain1.getBuffer() << "\n ";
-        std::cout << "Resultado: " << calcMain1.getResult() << "\n ";
-        std::cout << "Error: " << calcMain1.error << "\n\n";
-        std::cout << "Historial: " << calcMain1.getHistorial() << "\n\n";
+        std::cout << "\nTamaño de currentOperation: " << calcMain1.getCurrentOperationSize() << "\n\n";
 
     if(calcMain1.splitOperations())
     {
