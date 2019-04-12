@@ -8,7 +8,6 @@ class calc
     public:
         // Instances
             bool error;
-            char* currentOperation;
 
         // Methods
             calc();
@@ -36,6 +35,7 @@ class calc
         float result;
         float buffer;
         float historial;
+        char* currentOperation;
 };
 
 #endif // CALC_H
