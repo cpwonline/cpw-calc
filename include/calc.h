@@ -29,7 +29,7 @@ class calc
             float divide(float a, float b);
             bool splitOperations();
             short countSymbols(char op[], short sizeOp);
-            char* storeValues(char op[], short until, short *since, short sizeListOp2);
+            char* storeValues(char op[], short *since, short sizeListOp2);
 
     protected:
 

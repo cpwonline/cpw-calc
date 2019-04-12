@@ -102,19 +102,19 @@
                 {
                     // Store values founded
                         listOp[contListOp] = new char[sizeListOp2];
-                        until = since + sizeListOp2;
 
-                        listOp[contListOp] = storeValues(currentOperation, until, &since, sizeListOp2);
+                        listOp[contListOp] = storeValues(currentOperation, &since, sizeListOp2);
 
                     // Store the symbol
                         contListOp++;
                         listOp[contListOp] = new char[1];
-                        listOp[contListOp][0] = currentOperation[since];
-                        since++;
+
+                        listOp[contListOp] = storeValues(currentOperation, &since, 1);
+
                         contListOp++;
 
-        // Restart the sublist size
-            sizeListOp2 = 0;
+                    // Restart the sublist size
+                        sizeListOp2 = 0;
                 }
                 contCharOp++;
 
@@ -123,13 +123,8 @@
                     {
                         // Sore values founded
                             listOp[contListOp] = new char[sizeListOp2];
-                            until = since + sizeListOp2;
 
-                            for(short a = 0; since < until ; a++)
-                            {
-                                listOp[contListOp][a] = currentOperation[since]; // Store
-                                since++;
-                            }
+                            listOp[contListOp] = storeValues(currentOperation, &since, sizeListOp2);
                     }
             }while(contCharOp < sizeOp);
 
@@ -148,10 +143,11 @@
                 contSigns++;
         return contSigns;
     }
-    char* calc::storeValues(char op[], short until, short *since, short sizeListOp2)
+    char* calc::storeValues(char op[], short *since, short sizeListOp2)
     {
-        std::cout << "\nEstamos en storeValues, since: " << *since << ", until: " << until << ", sizelistOp2: " << sizeListOp2 << "\n";
+        short until = *since + sizeListOp2;
 
+        std::cout << "\nEstamos en storeValues, since: " << *since << ", until: " << until << ", sizelistOp2: " << sizeListOp2 << "\n";
         char* listOp;
         listOp = new char[sizeListOp2];
         // Store values founded
@@ -164,5 +160,6 @@
                 *since = *since + 1;
             }
             std::cout << "\n Retornamos: " << listOp << "\n";
+
         return listOp;
     }
