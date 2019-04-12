@@ -76,40 +76,56 @@
     bool calc::splitOperations()
     {
         std::cout << "Split operations: \n ";
-        char* listOp;
 
-        short cont = 0, sizeListOp = 0, beginNewOp = 0;
+        char** listOp;
+
+        short contCharOp = 0, sizeListOp = 0, contListOp = 0, beginNewOp = 0;
         bool saveEveryOp = false;
 
         short sizeOp = sizeof (currentOperation) / sizeof (currentOperation[0]);
         std::cout << "El tamaño del array de la operación actual es: " << sizeOp << "\n";
 
+        //
+        short contSigns = 0;
+        for(int a = 0; a < sizeOp; a++)
+        {
+            if(currentOperation[a] == '+' || currentOperation[a] == '-' || currentOperation[a] == 'x' || currentOperation[a] == '/')
+                contSigns++;
+        }
+
+        sizeListOp = sizeListOp * 2 + 1;
+        listOp = new char*[sizeListOp];
+
         // Vamos guardando valores hasta encontrar un signo
             do
             {
-                std::cout << "\n Entramos al do while. current[cont] vale: " << currentOperation[cont] << "\n";
-                if(currentOperation[cont] == 'x')
+                std::cout << "\n Entramos al do while. current[contCharOp] vale: " << currentOperation[contCharOp] << "\n";
+                if(currentOperation[contCharOp] == 'x')
                 {
                     /* Cuando encontramos un signo, empezamos a guardar todo lo anterior encontrado */
-                    listOp = new char[sizeListOp];
-                    for(short a = 0; beginNewOp < sizeListOp; beginNewOp++, a++)
+                    new listOp[contListOp][sizeListOp2];
+                    for(short a = 0; beginNewOp < sizeListOp2; beginNewOp++, a++)
                     {
                         std::cout << "\n begin=" << beginNewOp << ", Guardamos " << currentOperation[beginNewOp];
-                        listOp[a] = currentOperation[beginNewOp];
+                        listOp[sizeListOp2][a] = currentOperation[beginNewOp]; // Guardamos
                     }
-                    saveEveryOp = true;
+                    contListOp++;
                 }
                 else
                 {
-                    sizeListOp++;
-                    std::cout << "\n SizeListOp vale: " << sizeListOp << "\n";
+                    sizeListOp2++;
+                    std::cout << "\n SizeListOp2 vale: " << sizeListOp2 << "\n";
                 }
-                cont++;
-            }while(saveEveryOp == false);
+                contCharOp++;
+            }while(contCharOp < sizeOp);
 
-            std::cout << "Se guardó: " << listOp << "\n";
+            std::cout << "Se guardó: \n";
+            for(short a = 0; a < (sizeof(listOp) / sizeof(listOp[0])); a++)
+                for(short b = 0; b < (sizeof(listOp[a]) / sizeof(listOp[a][0])); b++)
+                    std::cout << "listOp[" << a << "][" << b << "]: " << listOp[a][b];
 
-            /*while(cont < sizeOp)
+
+            /*while(contChartOp < sizeOp)
             {
 
             }*/
