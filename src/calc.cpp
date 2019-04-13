@@ -85,11 +85,8 @@
         short contListOp = 0, since = 0, until = 0, sizeOp = getCurrentOperationSize();
 
         // verify how many symbols there is
-            for(int a = 0; a < sizeOp; a++)
-            {
-                if(currentOperation[a] == '+' || currentOperation[a] == '-' || currentOperation[a] == 'x' || currentOperation[a] == '/')
-                    contSigns++;
-            }
+            contSigns = countSymbols(currentOperation, sizeOp);
+
         // Put the sublist size
             sizeListOp = contSigns * 2 + 1;
             listOp = new char*[sizeListOp];
@@ -145,15 +142,11 @@
 
             return true;
     }
-    char* calc::convertToChar(float valor)
+    short calc::countSymbols(char op[], short sizeOp)
     {
-        /*char buffer[64];
-        int ret = snprintf(buffer, sizeof buffer, "%f", myFloat);
-
-        if (ret < 0) {
-            return EXIT_FAILURE;
-        }
-        if (ret >= sizeof buffer) {
-            /* Result was truncated - resize the buffer and retry.
-        }*/
+        short contSigns = 0;
+        for(int a = 0; a < sizeOp; a++)
+            if(op[a] == '+' || op[a] == '-' || op[a] == 'x' || op[a] == '/')
+                contSigns++;
+        return contSigns;
     }

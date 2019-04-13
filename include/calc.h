@@ -28,8 +28,7 @@ class calc
             float multiplicate(float a, float b);
             float divide(float a, float b);
             bool splitOperations();
-
-            char* convertToChar(float valor);
+            short countSymbols(char op[], short sizeOp);
 
     protected:
 
