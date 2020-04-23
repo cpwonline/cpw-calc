@@ -15,11 +15,17 @@ windowMain::windowMain() :
         set_resizable(false);
 
     // Widgets set up
+        boxText.set_margin_bottom(5);
+
         txtCalcs.set_max_length(20);
         txtCalcs.set_text("0");
         txtCalcs.select_region(0, txtCalcs.get_text_length());
         txtCalcs.set_can_default();
         txtCalcs.grab_default();
+
+        gridButtons.set_row_spacing(5);
+        gridButtons.set_column_spacing(5);
+
     // Packing
         add(boxMain);
         boxMain.pack_start(boxText);
