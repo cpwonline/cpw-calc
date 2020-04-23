@@ -13,8 +13,8 @@ class windowMain : public Gtk::Window
         // Manejadores de señal
 
         // Widgets de la ventana
-            Gtk::Box boxMain, boxText, boxButtons, boxNumbers, boxControls;
-            Gtk::Box boxNCol1, boxNCol2, boxNCol3;
+            Gtk::Box boxMain, boxText, boxNumbers, boxControls;
+            Gtk::Grid gridButtons;
             Gtk::Entry txtCalcs;
             Gtk::Button btnN1, btnN2, btnN3, btnN4, btnN5;
             Gtk::Button btnN6, btnN7, btnN8, btnN9;
