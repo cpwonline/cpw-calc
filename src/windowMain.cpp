@@ -10,25 +10,25 @@ windowMain::windowMain() :
     boxControls(Gtk::ORIENTATION_VERTICAL),
     boxNumbers(Gtk::ORIENTATION_VERTICAL)
 {
-    // Características básicas de la ventana
+    // Window basics properties
         set_title("CPW Calc");
         set_default_size(300, 400);
         set_border_width(10);
         set_resizable(false);
 
-    // Configuramos los Widgets
+    // Widgets set up
         txtCalcs.set_max_length(20);
         txtCalcs.set_text("0");
         txtCalcs.select_region(0, txtCalcs.get_text_length());
         txtCalcs.set_can_default();
         txtCalcs.grab_default();
-    // Empaquetamos
+    // Packing
         add(boxMain);
         boxMain.pack_start(boxText);
         boxMain.pack_start(boxButtons);
             boxText.pack_start(txtCalcs);
-            boxButtons.pack_start(boxNumbers);
-            boxButtons.pack_start(boxControls);
+            boxButtons.pack_start(boxNumbers, Gtk::PACK_EXPAND_WIDGET, 2);
+            boxButtons.pack_start(boxControls, Gtk::PACK_EXPAND_WIDGET, 2);
                 boxNumbers.pack_start(boxNCol1);
                 boxNumbers.pack_start(boxNCol2);
                 boxNumbers.pack_start(boxNCol3);
@@ -52,5 +52,4 @@ windowMain::windowMain() :
 
 windowMain::~windowMain()
 {
-    //dtor
 }
