@@ -5,14 +5,12 @@ windowMain::windowMain() :
     btnN4("4"), btnN5("5"), btnN6("6"), btnN7("7"),
     btnN8("8"), btnN9("9"), btnPlus("+"), btnLess("-"),
     btnMult("*"), btnDiv("/"), btnIqual("="), btnC("C"),
-    btnCA("CA"),
-    boxMain(Gtk::ORIENTATION_VERTICAL),
-    boxControls(Gtk::ORIENTATION_VERTICAL),
-    boxNumbers(Gtk::ORIENTATION_VERTICAL)
+    btnCA("CA"), btnOPa("("), btnCPa(")"),
+    boxMain(Gtk::ORIENTATION_VERTICAL)
 {
     // Window basics properties
         set_title("CPW Calc");
-        set_default_size(300, 400);
+        set_default_size(200, 300);
         set_border_width(10);
         set_resizable(false);
 
@@ -25,27 +23,31 @@ windowMain::windowMain() :
     // Packing
         add(boxMain);
         boxMain.pack_start(boxText);
-        boxMain.pack_start(boxButtons);
+        boxMain.pack_start(gridButtons);
             boxText.pack_start(txtCalcs);
-            boxButtons.pack_start(boxNumbers, Gtk::PACK_EXPAND_WIDGET, 2);
-            boxButtons.pack_start(boxControls, Gtk::PACK_EXPAND_WIDGET, 2);
-                boxNumbers.pack_start(boxNCol1);
-                boxNumbers.pack_start(boxNCol2);
-                boxNumbers.pack_start(boxNCol3);
-                    boxNCol1.pack_start(btnN7);
-                    boxNCol1.pack_start(btnN8);
-                    boxNCol1.pack_start(btnN9);
-                    boxNCol2.pack_start(btnN4);
-                    boxNCol2.pack_start(btnN5);
-                    boxNCol2.pack_start(btnN6);
-                    boxNCol3.pack_start(btnN0);
-                    boxNCol3.pack_start(btnN1);
-                    boxNCol3.pack_start(btnN2);
-                boxControls.pack_start(btnPlus);
-                boxControls.pack_start(btnLess);
-                boxControls.pack_start(btnMult);
-                boxControls.pack_start(btnDiv);
-                boxControls.pack_start(btnIqual);
+
+            gridButtons.add(btnN7);
+            gridButtons.add(btnN8);
+            gridButtons.add(btnN9);
+            gridButtons.add(btnC);
+            gridButtons.add(btnPlus);
+
+            gridButtons.attach_next_to(btnN4, btnN7, Gtk::POS_BOTTOM, 1, 1);
+            gridButtons.attach_next_to(btnN5, btnN8, Gtk::POS_BOTTOM, 1, 1);
+            gridButtons.attach_next_to(btnN6, btnN9, Gtk::POS_BOTTOM, 1, 1);
+            gridButtons.attach_next_to(btnCA, btnC, Gtk::POS_BOTTOM, 1, 1);
+            gridButtons.attach_next_to(btnLess, btnPlus, Gtk::POS_BOTTOM, 1, 1);
+
+            gridButtons.attach_next_to(btnN1, btnN4, Gtk::POS_BOTTOM, 1, 1);
+            gridButtons.attach_next_to(btnN2, btnN5, Gtk::POS_BOTTOM, 1, 1);
+            gridButtons.attach_next_to(btnN3, btnN6, Gtk::POS_BOTTOM, 1, 1);
+            gridButtons.attach_next_to(btnDiv, btnCA, Gtk::POS_BOTTOM, 1, 1);
+            gridButtons.attach_next_to(btnMult, btnLess, Gtk::POS_BOTTOM, 1, 1);
+
+            gridButtons.attach_next_to(btnN0, btnN1, Gtk::POS_BOTTOM, 2, 1);
+            gridButtons.attach_next_to(btnOPa, btnN3, Gtk::POS_BOTTOM, 1, 1);
+            gridButtons.attach_next_to(btnCPa, btnDiv, Gtk::POS_BOTTOM, 1, 1);
+            gridButtons.attach_next_to(btnIqual, btnMult, Gtk::POS_BOTTOM, 1, 1);
 
         show_all_children();
 }
