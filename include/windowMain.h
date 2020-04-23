@@ -14,6 +14,7 @@ class windowMain : public Gtk::Window
 
         // Widgets de la ventana
             Gtk::Box boxMain, boxText, boxButtons, boxNumbers, boxControls;
+            Gtk::Box boxNCol1, boxNCol2, boxNCol3;
             Gtk::Entry txtCalcs;
             Gtk::Button btnN1, btnN2, btnN3, btnN4, btnN5;
             Gtk::Button btnN6, btnN7, btnN8, btnN9;
