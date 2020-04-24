@@ -149,15 +149,17 @@ void windowMain::on_click_c()
 {
     if(txtCalcs.get_text() != "0")
     {
-        std::string text = txtCalcs.get_text();
-        std::string newText = "";
+        short length = txtCalcs.get_text_length();
+        char text[] = txtCalcs.get_text();
+        char newText[length];
         int cont = 0;
-        while(cont < std::strlen(text) - 1)
+        while(cont < strlen(text) - 1)
         {
-            newText += text[cont];
+            newText[cont] = text[cont];
             cont++;
         }
-        txtCalcs.set_text(newText);
+        std::cout << newText << "\n";
+        //txtCalcs.set_text(newText);
     }
 }
 
