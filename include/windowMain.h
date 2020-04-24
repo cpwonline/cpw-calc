@@ -11,6 +11,25 @@ class windowMain : public Gtk::Window
 
     protected:
         // Manejadores de señal
+            void on_click_0();
+            void on_click_1();
+            void on_click_2();
+            void on_click_3();
+            void on_click_4();
+            void on_click_5();
+            void on_click_6();
+            void on_click_7();
+            void on_click_8();
+            void on_click_9();
+            void on_click_plus();
+            void on_click_less();
+            void on_click_mult();
+            void on_click_div();
+            void on_click_c();
+            void on_click_ca();
+            void on_click_cpa();
+            void on_click_opa();
+            void on_click_iqual();
 
         // Widgets de la ventana
             Gtk::Box boxMain, boxText;
