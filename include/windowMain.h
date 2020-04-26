@@ -34,11 +34,23 @@ class windowMain : public Gtk::Window
         // Widgets de la ventana
             Gtk::Box boxMain, boxText;
             Gtk::Grid gridButtons;
+
             Gtk::Entry txtCalcs;
             Gtk::Button btnN1, btnN2, btnN3, btnN4, btnN5;
             Gtk::Button btnN6, btnN7, btnN8, btnN9;
             Gtk::Button btnN0, btnPlus, btnLess, btnMult;
             Gtk::Button btnDiv, btnIqual, btnC, btnCA, btnOPa, btnCPa;
+
+            Gtk::MenuBar menuBarMain;
+
+            Gtk::MenuItem itemFile, itemEdit, itemHelp;
+            Gtk::Menu menuFile, menuEdit, menuHelp;
+
+            Gtk::ImageMenuItem itemQuit(Gtk::Stock::QUIT);
+            Gtk::ImageMenuItem itemCopy(Gtk::Stock::COPY);
+            Gtk::ImageMenuItem itemCut(Gtk::Stock::CUT);
+            Gtk::ImageMenuItem itemPaste(Gtk::Stock::PASTE);
+            Gtk::ImageMenuItem itemAbout(Gtk::Stock::ABOUT);
 };
 
 #endif // WINDOWMAIN_H

@@ -29,6 +29,30 @@ windowMain::windowMain() :
         gridButtons.set_row_spacing(5);
         gridButtons.set_column_spacing(5);
 
+        itemFile.set_label("_File");
+        itemEdit.set_label("_Edit");
+        itemHelp.set_label("_Help");
+        itemQuit().set_label("_Quit");
+        itemCopy().set_label("_Copy");
+        itemCut().set_label("C_ut");
+        itemPaste().set_label("_Paste");
+        itemAbout().set_label("_About");
+
+        itemFile.set_submenu(menuFile);
+        itemEdit.set_submenu(menuEdit);
+        itemHelp.set_submenu(menuHelp);
+
+        menuBarMain.append(itemFile);
+        menuBarMain.append(itemEdit);
+        menuBarMain.append(itemHelp);
+
+        menuFile.append(itemQuit);
+        menuEdit.append(itemCopy);
+        menuEdit.append(itemCut);
+        menuEdit.append(itemPaste);
+        menuHelp.append(itemAbout());
+
+
     // Signal handlers
         btnN1.signal_clicked().connect(sigc::mem_fun(
             *this,
@@ -150,10 +174,9 @@ void windowMain::on_click_c()
     if(txtCalcs.get_text() != "0")
     {
         short length = txtCalcs.get_text_length();
-        char text[] = txtCalcs.get_text();
         char newText[length];
         int cont = 0;
-        while(cont < strlen(text) - 1)
+        while(cont < txtCalcs.get_text_length() - 1)
         {
             newText[cont] = text[cont];
             cont++;
