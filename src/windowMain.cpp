@@ -19,7 +19,7 @@ windowMain::windowMain() :
     // Widgets set up
         boxText.set_margin_bottom(5);
 
-        txtCalcs.set_max_length(20);
+        txtCalcs.set_max_length(1000);
         txtCalcs.set_text("0");
         txtCalcs.select_region(0, txtCalcs.get_text_length());
         txtCalcs.set_can_default();
