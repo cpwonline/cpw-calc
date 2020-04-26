@@ -181,7 +181,7 @@ windowMain::~windowMain()
 void windowMain::on_click_0()
 {
     if(txtCalcs.get_text() != "0")
-        txtCalcs.set_text(txtCalcs.get_text() + "2");
+        txtCalcs.set_text(txtCalcs.get_text() + "0");
 }
 void windowMain::on_click_1()
 {
