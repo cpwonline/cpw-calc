@@ -46,11 +46,11 @@ class windowMain : public Gtk::Window
             Gtk::MenuItem itemFile, itemEdit, itemHelp;
             Gtk::Menu menuFile, menuEdit, menuHelp;
 
-            Gtk::ImageMenuItem itemQuit(Gtk::Stock::QUIT);
-            Gtk::ImageMenuItem itemCopy(Gtk::Stock::COPY);
-            Gtk::ImageMenuItem itemCut(Gtk::Stock::CUT);
-            Gtk::ImageMenuItem itemPaste(Gtk::Stock::PASTE);
-            Gtk::ImageMenuItem itemAbout(Gtk::Stock::ABOUT);
+            Gtk::ImageMenuItem itemQuit;
+            Gtk::ImageMenuItem itemCopy;
+            Gtk::ImageMenuItem itemCut;
+            Gtk::ImageMenuItem itemPaste;
+            Gtk::ImageMenuItem itemAbout;
 };
 
 #endif // WINDOWMAIN_H

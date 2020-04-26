@@ -8,7 +8,11 @@ windowMain::windowMain() :
         btnN8("8"), btnN9("9"), btnPlus("+"), btnLess("-"),
         btnMult("*"), btnDiv("/"), btnIqual("="), btnC("C"),
         btnCA("CA"), btnOPa("("), btnCPa(")"),
-        boxMain(Gtk::ORIENTATION_VERTICAL)
+        boxMain(Gtk::ORIENTATION_VERTICAL),
+
+        itemQuit(Gtk::Stock::QUIT),itemCopy(Gtk::Stock::COPY),
+        itemCut(Gtk::Stock::CUT),itemPaste(Gtk::Stock::PASTE),
+        itemAbout(Gtk::Stock::ABOUT)
 {
     // Window basics properties
         set_title("CPW Calc");
@@ -32,11 +36,11 @@ windowMain::windowMain() :
         itemFile.set_label("_File");
         itemEdit.set_label("_Edit");
         itemHelp.set_label("_Help");
-        itemQuit().set_label("_Quit");
-        itemCopy().set_label("_Copy");
-        itemCut().set_label("C_ut");
-        itemPaste().set_label("_Paste");
-        itemAbout().set_label("_About");
+        itemQuit.set_label("_Quit");
+        itemCopy.set_label("_Copy");
+        itemCut.set_label("C_ut");
+        itemPaste.set_label("_Paste");
+        itemAbout.set_label("_About");
 
         itemFile.set_submenu(menuFile);
         itemEdit.set_submenu(menuEdit);
