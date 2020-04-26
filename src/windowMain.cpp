@@ -17,11 +17,13 @@ windowMain::windowMain() :
     // Window basics properties
         set_title("CPW Calc");
         set_default_size(200, 300);
-        //set_border_width(10);
         set_resizable(false);
 
     // Widgets set up
+        boxText.set_margin_top(5);
         boxText.set_margin_bottom(5);
+        boxText.set_border_width(5);
+        gridButtons.set_border_width(5);
 
         txtCalcs.set_max_length(20);
         txtCalcs.set_text("0");
@@ -71,8 +73,8 @@ windowMain::windowMain() :
         add(boxMain);
 
         boxMain.pack_start(menuBarMain);
-        boxMain.pack_start(boxText, Gtk::PACK_EXPAND_WIDGET, 10);
-        boxMain.pack_start(gridButtons, Gtk::PACK_EXPAND_WIDGET, 10);
+        boxMain.pack_start(boxText);
+        boxMain.pack_start(gridButtons);
 
             boxText.pack_start(txtCalcs);
 
