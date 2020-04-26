@@ -17,7 +17,7 @@ windowMain::windowMain() :
     // Window basics properties
         set_title("CPW Calc");
         set_default_size(200, 300);
-        set_border_width(10);
+        //set_border_width(10);
         set_resizable(false);
 
     // Widgets set up
@@ -33,14 +33,14 @@ windowMain::windowMain() :
         gridButtons.set_row_spacing(5);
         gridButtons.set_column_spacing(5);
 
-        itemFile.set_label("_File");
-        itemEdit.set_label("_Edit");
-        itemHelp.set_label("_Help");
-        itemQuit.set_label("_Quit");
-        itemCopy.set_label("_Copy");
-        itemCut.set_label("C_ut");
-        itemPaste.set_label("_Paste");
-        itemAbout.set_label("_About");
+        itemFile.set_label("File");
+        itemEdit.set_label("Edit");
+        itemHelp.set_label("Help");
+        itemQuit.set_label("Quit");
+        itemCopy.set_label("Copy");
+        itemCut.set_label("Cut");
+        itemPaste.set_label("Paste");
+        itemAbout.set_label("About");
 
         itemFile.set_submenu(menuFile);
         itemEdit.set_submenu(menuEdit);
@@ -54,7 +54,7 @@ windowMain::windowMain() :
         menuEdit.append(itemCopy);
         menuEdit.append(itemCut);
         menuEdit.append(itemPaste);
-        menuHelp.append(itemAbout());
+        menuHelp.append(itemAbout);
 
 
     // Signal handlers
@@ -69,8 +69,11 @@ windowMain::windowMain() :
 
     // Packing
         add(boxMain);
-        boxMain.pack_start(boxText);
-        boxMain.pack_start(gridButtons);
+
+        boxMain.pack_start(menuBarMain);
+        boxMain.pack_start(boxText, Gtk::PACK_EXPAND_WIDGET, 10);
+        boxMain.pack_start(gridButtons, Gtk::PACK_EXPAND_WIDGET, 10);
+
             boxText.pack_start(txtCalcs);
 
             gridButtons.add(btnN7);
@@ -182,10 +185,10 @@ void windowMain::on_click_c()
         int cont = 0;
         while(cont < txtCalcs.get_text_length() - 1)
         {
-            newText[cont] = text[cont];
+//            newText[cont] = text[cont];
             cont++;
         }
-        std::cout << newText << "\n";
+        //std::cout << newText << "\n";
         //txtCalcs.set_text(newText);
     }
 }
