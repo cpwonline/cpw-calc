@@ -104,7 +104,7 @@ windowMain::windowMain() :
         ));
         btnIqual.signal_clicked().connect(sigc::mem_fun(
             *this,
-            &windowMain::on_click_iqual()
+            &windowMain::on_click_iqual
         ));
 
     // Packing
@@ -215,7 +215,7 @@ void windowMain::on_click_9()
 }
 void windowMain::on_click_c()
 {
-    if(txtCalcs.get_text() != "0")
+    /*if(txtCalcs.get_text() != "0")
     {
         short length = txtCalcs.get_text_length();
         char text[] = txtCalcs.get_text();
@@ -228,6 +228,30 @@ void windowMain::on_click_c()
         }
         std::cout << newText << "\n";
         //txtCalcs.set_text(newText);
-    }
+    }*/
+}
+void windowMain::on_click_ca()
+{
+}
+void windowMain::on_click_opa()
+{
+}
+void windowMain::on_click_cpa()
+{
+}
+void windowMain::on_click_plus()
+{
+}
+void windowMain::on_click_less()
+{
+}
+void windowMain::on_click_mult()
+{
+}
+void windowMain::on_click_div()
+{
+}
+void windowMain::on_click_iqual()
+{
 }
 
