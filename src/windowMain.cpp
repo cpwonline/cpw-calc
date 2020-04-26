@@ -12,7 +12,7 @@ windowMain::windowMain() :
 {
     // Window basics properties
         set_title("CPW Calc");
-        set_default_size(200, 300);
+        set_default_size(200, 295);
         set_border_width(10);
         set_resizable(false);
 
@@ -30,6 +30,10 @@ windowMain::windowMain() :
         gridButtons.set_column_spacing(5);
 
     // Signal handlers
+        btnN0.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_0
+        ));
         btnN1.signal_clicked().connect(sigc::mem_fun(
             *this,
             &windowMain::on_click_1
@@ -37,6 +41,70 @@ windowMain::windowMain() :
         btnN2.signal_clicked().connect(sigc::mem_fun(
             *this,
             &windowMain::on_click_2
+        ));
+        btnN3.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_3
+        ));
+        btnN4.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_4
+        ));
+        btnN5.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_5
+        ));
+        btnN6.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_6
+        ));
+        btnN7.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_7
+        ));
+        btnN8.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_8
+        ));
+        btnN9.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_9
+        ));
+        btnC.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_c
+        ));
+        btnCA.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_ca
+        ));
+        btnOPa.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_opa
+        ));
+        btnCPa.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_cpa
+        ));
+        btnPlus.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_plus
+        ));
+        btnLess.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_less
+        ));
+        btnMult.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_mult
+        ));
+        btnDiv.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_div
+        ));
+        btnIqual.signal_clicked().connect(sigc::mem_fun(
+            *this,
+            &windowMain::on_click_iqual()
         ));
 
     // Packing
