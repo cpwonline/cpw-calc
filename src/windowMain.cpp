@@ -232,24 +232,41 @@ void windowMain::on_click_c()
 }
 void windowMain::on_click_ca()
 {
+    txtCalcs.set_text("0");
 }
 void windowMain::on_click_opa()
 {
+    if(txtCalcs.get_text() == "0")
+        txtCalcs.set_text("(");
+    else
+        txtCalcs.set_text(txtCalcs.get_text() + "(");
 }
 void windowMain::on_click_cpa()
 {
+    if(txtCalcs.get_text() != "0")
+        txtCalcs.set_text(txtCalcs.get_text() + ")");
 }
 void windowMain::on_click_plus()
 {
+    if(txtCalcs.get_text() != "0")
+        txtCalcs.set_text(txtCalcs.get_text() + "+");
 }
 void windowMain::on_click_less()
 {
+    if(txtCalcs.get_text() == "0")
+        txtCalcs.set_text("-");
+    else
+        txtCalcs.set_text(txtCalcs.get_text() + "-");
 }
 void windowMain::on_click_mult()
 {
+    if(txtCalcs.get_text() != "0")
+        txtCalcs.set_text(txtCalcs.get_text() + "x");
 }
 void windowMain::on_click_div()
 {
+    if(txtCalcs.get_text() != "0")
+        txtCalcs.set_text(txtCalcs.get_text() + "/");
 }
 void windowMain::on_click_iqual()
 {
