@@ -7,29 +7,29 @@ class calc
 {
     public:
         // Instances
+            bool error;
 
         // Methods
             calc();
-            virtual ~calc();
             float getResult();
             float getBuffer();
-            float[] getHistorial();
+            float getHistorial();
 
             void setResult(float r);
             void setBuffer(float b);
             void setHistorial(float h);
 
-            void sum(float a, float b);
-            void subtract(float a, float b);
-            void multiplicate(float a, float b);
-            void divide(float a, float b);
+            float sum(float a, float b);
+            float subtract(float a, float b);
+            float multiplicate(float a, float b);
+            float divide(float a, float b);
 
     protected:
 
     private:
         float result;
         float buffer;
-        float historial[];
+        float historial;
 };
 
 #endif // CALC_H

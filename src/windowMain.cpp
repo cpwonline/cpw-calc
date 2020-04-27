@@ -1,4 +1,5 @@
 #include "windowMain.h"
+#include "calc.h"
 #include <iostream>
 
 windowMain::windowMain() :
@@ -302,5 +303,7 @@ void windowMain::on_click_div()
 }
 void windowMain::on_click_iqual()
 {
+    calc calcMain1;
+    std::cout << calcMain1.getBuffer() << "\n" calcMain1.getResult() << "\n" << calcMain1.error;
 }
 
