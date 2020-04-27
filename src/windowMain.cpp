@@ -88,7 +88,7 @@ windowMain::windowMain() :
         itemAbout.signal_activate().connect(
             sigc::mem_fun(
                 *this,
-                &windowMain::on_click_paste
+                &windowMain::on_click_about
             )
         );
 
@@ -357,14 +357,19 @@ void windowMain::on_click_cut()
 void windowMain::on_click_paste()
 {
     auto refClipboard = Gtk::Clipboard::get();
-    //refClipboard->request_text(txtCalcs.set_text())
+    refClipboard->request_text(sigc::mem_fun(
+        *this,
+        &ExampleWindow::on_clipboard_paste)
+    );
+}
+void windowMain::on_clipboard_paste(const Glib::ustring& text)
+{
+    txtCalcs.set_text(text);
 }
 void windowMain::on_click_about()
 {
-    dialogAbout(
-        *this, "This is an INFO MessageDialog"
-    );
-    dialogAbout.set_secondary_text("Developed for the CPW Online Software Developers Team. \n CPW Online. 2020");
+    Gtk::MessageDialog dialogAbout(*this, "This is an INFO MessageDialog");
+    dialogAbout.set_secondary_text("Developed for the CPW Online Software Developers Team. \nCPW Online. 2020");
 
     dialogAbout.run();
 }

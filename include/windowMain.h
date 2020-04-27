@@ -35,6 +35,7 @@ class windowMain : public Gtk::Window
             void on_click_copy();
             void on_click_cut();
             void on_click_paste();
+            void on_clipboard_paste();
             void on_click_about();
 
         // Widgets de la ventana
@@ -57,8 +58,6 @@ class windowMain : public Gtk::Window
             Gtk::ImageMenuItem itemCut;
             Gtk::ImageMenuItem itemPaste;
             Gtk::ImageMenuItem itemAbout;
-
-            Gtk::MessageDialog dialogAbout;
 };
 
 #endif // WINDOWMAIN_H
