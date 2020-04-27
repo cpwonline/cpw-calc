@@ -304,3 +304,28 @@ void windowMain::on_click_iqual()
 {
 }
 
+void windowMain::on_click_quit()
+{
+    hide();
+}
+void windowMain::on_click_copy()
+{
+    Glib::ustring strData;
+    strData = txtCalcs.get_text();
+
+    auto refClipboard = Gtk::Clipboard::get();
+    refClipboard->set_text(strData);
+}
+void windowMain::on_click_cut()
+{
+
+}
+void windowMain::on_click_paste()
+{
+    auto refClipboard = Gtk::Clipboard::get();
+    //refClipboard->request_text(txtCalcs.set_text())
+}
+void windowMain::on_click_about()
+{
+
+}
