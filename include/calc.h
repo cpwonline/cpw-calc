@@ -1,22 +1,35 @@
 #ifndef CALC_H
 #define CALC_H
 
+#include <iostream>
 
 class calc
 {
     public:
-        calc();
-        virtual ~calc();
-        float sum(float a, float b);
-        float rest(float a, float b);
-        float multiplicate(float a, float b);
-        float divide(float a, float b);
-        bool error;
+        // Instances
+
+        // Methods
+            calc();
+            virtual ~calc();
+            float getResult();
+            float getBuffer();
+            float[] getHistorial();
+
+            void setResult(float r);
+            void setBuffer(float b);
+            void setHistorial(float h);
+
+            void sum(float a, float b);
+            void subtract(float a, float b);
+            void multiplicate(float a, float b);
+            void divide(float a, float b);
 
     protected:
 
     private:
-        float result, operations;
+        float result;
+        float buffer;
+        float historial[];
 };
 
 #endif // CALC_H
