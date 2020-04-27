@@ -361,5 +361,10 @@ void windowMain::on_click_paste()
 }
 void windowMain::on_click_about()
 {
+    dialogAbout(
+        *this, "This is an INFO MessageDialog"
+    );
+    dialogAbout.set_secondary_text("Developed for the CPW Online Software Developers Team. \n CPW Online. 2020");
 
+    dialogAbout.run();
 }

@@ -57,6 +57,8 @@ class windowMain : public Gtk::Window
             Gtk::ImageMenuItem itemCut;
             Gtk::ImageMenuItem itemPaste;
             Gtk::ImageMenuItem itemAbout;
+
+            Gtk::MessageDialog dialogAbout;
 };
 
 #endif // WINDOWMAIN_H
