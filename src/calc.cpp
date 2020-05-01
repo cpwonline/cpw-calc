@@ -11,19 +11,19 @@
     }
 
 // Getters
-    float calc::getResult()
+    float calc::getResult() const
     {
         return result;
     }
-    float calc::getBuffer()
+    float calc::getBuffer() const
     {
         return buffer;
     }
-    float calc::getHistorial()
+    float calc::getHistorial() const
     {
         return historial;
     }
-    char[] calc::getCurrentOperation()
+    char* calc::getCurrentOperation() const
     {
         return currentOperation;
     }

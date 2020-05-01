@@ -15,7 +15,7 @@ class calc
             float getResult() const;
             float getBuffer() const;
             float getHistorial() const;
-            char[] getCurrentOperation() const;
+            char* getCurrentOperation() const;
 
             void setResult(float r);
             void setBuffer(float b);

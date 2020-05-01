@@ -355,7 +355,7 @@ void windowMain::on_click_iqual()
 
     calcMain1.setCurrentOperation(currentTextChar);
 
-        std::cout << "\nValor de currentOperation: " << calcMain1.currentOperation << "\n\n";
+        std::cout << "\nValor de currentOperation: " << calcMain1.getCurrentOperation() << "\n\n";
         /*std::cout << "Buffer: " << calcMain1.getBuffer() << "\n ";
         std::cout << "Resultado: " << calcMain1.getResult() << "\n ";
         std::cout << "Error: " << calcMain1.error << "\n\n";
