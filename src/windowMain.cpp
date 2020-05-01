@@ -340,29 +340,26 @@ void windowMain::on_click_iqual()
     calcMain1.setHistorial(20.3);
 
     int sizeChar = txtCalcs.get_text_length();
-    calcMain1.currentOperation = new char[sizeChar];
+    Glib::ustring currentText = txtCalcs.get_text();
+    char currentTextChar[sizeChar];
 
-    Glib::ustring valor = txtCalcs.get_text();
-    char valor2[sizeChar];
-
-    std::cout << valor << " (" << sizeChar << "): \n";
-
-    for(int a = 0; a < 4; a++)
+    for(int a = 0; a < sizeChar; a++)
     {
-        std::cout << "Valor " << a << ": " << valor[a] << "\n";
-        valor2[a] = valor[a];
-    }
-    std::cout << "Valor2: " << valor2 << "\n";
-    for(int a = 0; a < 4; a++)
-    {
-        std::cout << "Valor2 " << a << ": " << valor2[a] << "\n";
+        currentTextChar[a] = currentText[a];
     }
 
+    // Impresión
+        std::cout << "Current: " << currentTextChar << "\n";
 
-    /*std::cout << "Buffer: " << calcMain1.getBuffer() << "\n ";
-    std::cout << "Resultado: " << calcMain1.getResult() << "\n ";
-    std::cout << "Error: " << calcMain1.error << "\n\n";
-    std::cout << "Historial: " << calcMain1.getHistorial() << "\n\n";*/
+        for(int a = 0; a < sizeChar; a++) std::cout << "\n Current[" << a << "]: " << currentTextChar[a];
+
+    calcMain1.setCurrentOperation(currentTextChar);
+
+        std::cout << "\nValor de currentOperation: " << calcMain1.currentOperation << "\n\n";
+        /*std::cout << "Buffer: " << calcMain1.getBuffer() << "\n ";
+        std::cout << "Resultado: " << calcMain1.getResult() << "\n ";
+        std::cout << "Error: " << calcMain1.error << "\n\n";
+        std::cout << "Historial: " << calcMain1.getHistorial() << "\n\n";*/
 }
 
 void windowMain::on_click_quit()

@@ -1,4 +1,5 @@
 #include "calc.h"
+#include <iostream>
 
 // Constructor
     calc::calc()
@@ -22,6 +23,10 @@
     {
         return historial;
     }
+    char[] calc::getCurrentOperation()
+    {
+        return currentOperation;
+    }
 
 // Setters
     void calc::setResult(float r)
@@ -36,11 +41,14 @@
     {
         historial = h;
     }
-    /*void calc::setCurrentOperation(char op[])
+    void calc::setCurrentOperation(char op[])
     {
-        int sizeChar  sizeof(op) / sizeof(op[0]);
-        currentOperation = new char[sizeChar]
-    }*/
+        short sizeChar = sizeof(op) / sizeof(op[0]);
+        currentOperation = new char[sizeChar];
+
+        std::cout << "En la función \n Tamaño: " << sizeChar;
+        currentOperation = op;
+    }
 
 // Members
     float calc::sum(float a, float b)

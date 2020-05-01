@@ -15,11 +15,12 @@ class calc
             float getResult();
             float getBuffer();
             float getHistorial();
+            char[] getCurrentOperation();
 
             void setResult(float r);
             void setBuffer(float b);
             void setHistorial(float h);
-            //void setCurrentOperation(char op[]);
+            void setCurrentOperation(char op[]);
 
             float sum(float a, float b);
             float subtract(float a, float b);
