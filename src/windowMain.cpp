@@ -304,6 +304,6 @@ void windowMain::on_click_div()
 void windowMain::on_click_iqual()
 {
     calc calcMain1;
-    std::cout << calcMain1.getBuffer() << "\n" calcMain1.getResult() << "\n" << calcMain1.error;
+    std::cout << calcMain1.getBuffer() << "\n" << calcMain1.getResult() << "\n" << calcMain1.error;
 }
 
