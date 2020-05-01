@@ -59,8 +59,6 @@ windowMain::windowMain() :
         gridButtons.set_row_spacing(5);
         gridButtons.set_column_spacing(5);
 
-
-
     // Signal handlers
         itemQuit.signal_activate().connect(
             sigc::mem_fun(
