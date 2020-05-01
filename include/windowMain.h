@@ -31,6 +31,13 @@ class windowMain : public Gtk::Window
             void on_click_opa();
             void on_click_iqual();
 
+            void on_click_quit();
+            void on_click_copy();
+            void on_click_cut();
+            void on_click_paste();
+            void on_clipboard_paste(const Glib::ustring& text);
+            void on_click_about();
+
         // Widgets de la ventana
             Gtk::Box boxMain, boxText;
             Gtk::Grid gridButtons;

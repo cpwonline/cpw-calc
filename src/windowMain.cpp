@@ -19,23 +19,9 @@ windowMain::windowMain() :
         set_title("CPW Calc");
         set_default_size(200, 300);
         set_resizable(false);
+        set_icon_from_file("Logo-128x128.png");
 
     // Widgets set up
-        boxText.set_margin_top(5);
-        boxText.set_margin_bottom(5);
-        boxText.set_border_width(5);
-        gridButtons.set_border_width(5);
-
-        txtCalcs.set_max_length(1000);
-        txtCalcs.set_text("0");
-        txtCalcs.select_region(0, txtCalcs.get_text_length());
-        txtCalcs.set_can_default();
-        txtCalcs.grab_default();
-        txtCalcs.set_alignment(2);
-
-        gridButtons.set_row_spacing(5);
-        gridButtons.set_column_spacing(5);
-
         itemFile.set_label("File");
         itemEdit.set_label("Edit");
         itemHelp.set_label("Help");
@@ -59,8 +45,53 @@ windowMain::windowMain() :
         menuEdit.append(itemPaste);
         menuHelp.append(itemAbout);
 
+        boxText.set_margin_top(5);
+        boxText.set_margin_bottom(5);
+        boxText.set_border_width(5);
+        gridButtons.set_border_width(5);
+
+        txtCalcs.set_max_length(1000);
+        txtCalcs.set_text("0");
+        txtCalcs.select_region(0, txtCalcs.get_text_length());
+        txtCalcs.set_can_default();
+        txtCalcs.grab_default();
+        txtCalcs.set_alignment(2);
+
+        gridButtons.set_row_spacing(5);
+        gridButtons.set_column_spacing(5);
 
     // Signal handlers
+        itemQuit.signal_activate().connect(
+            sigc::mem_fun(
+                *this,
+                &windowMain::on_click_quit
+            )
+        );
+        itemCopy.signal_activate().connect(
+            sigc::mem_fun(
+                *this,
+                &windowMain::on_click_copy
+            )
+        );
+        itemCut.signal_activate().connect(
+            sigc::mem_fun(
+                *this,
+                &windowMain::on_click_cut
+            )
+        );
+        itemPaste.signal_activate().connect(
+            sigc::mem_fun(
+                *this,
+                &windowMain::on_click_paste
+            )
+        );
+        itemAbout.signal_activate().connect(
+            sigc::mem_fun(
+                *this,
+                &windowMain::on_click_about
+            )
+        );
+
         btnN0.signal_clicked().connect(sigc::mem_fun(
             *this,
             &windowMain::on_click_0
@@ -307,3 +338,42 @@ void windowMain::on_click_iqual()
     std::cout << calcMain1.getBuffer() << "\n" << calcMain1.getResult() << "\n" << calcMain1.error;
 }
 
+void windowMain::on_click_quit()
+{
+    hide();
+}
+void windowMain::on_click_copy()
+{
+    Glib::ustring strData;
+    strData = txtCalcs.get_text();
+
+    auto refClipboard = Gtk::Clipboard::get();
+    refClipboard->set_text(strData);
+}
+void windowMain::on_click_cut()
+{
+    on_click_copy();
+    txtCalcs.set_text("0");
+}
+void windowMain::on_click_paste()
+{
+    auto refClipboard = Gtk::Clipboard::get();
+    refClipboard->request_text(sigc::mem_fun(
+        *this,
+        &windowMain::on_clipboard_paste)
+    );
+}
+void windowMain::on_clipboard_paste(const Glib::ustring& text)
+{
+    if(txtCalcs.get_text() == "0")
+        txtCalcs.set_text(text);
+    else
+        txtCalcs.set_text(txtCalcs.get_text() + text);
+}
+void windowMain::on_click_about()
+{
+    Gtk::MessageDialog dialogAbout(*this, "About CPW Calc");
+    dialogAbout.set_secondary_text("CPW Calc is a simple, fast and lightweiht calculator. \nDeveloped for the CPW Online Software Developers Team. \nVisit https://github.com/cpwonline for more software. \nCPW Online. 2020");
+
+    dialogAbout.run();
+}
