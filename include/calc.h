@@ -8,6 +8,7 @@ class calc
     public:
         // Instances
             bool error;
+            char* currentOperation;
 
         // Methods
             calc();
@@ -18,11 +19,13 @@ class calc
             void setResult(float r);
             void setBuffer(float b);
             void setHistorial(float h);
+            //void setCurrentOperation(char op[]);
 
             float sum(float a, float b);
             float subtract(float a, float b);
             float multiplicate(float a, float b);
             float divide(float a, float b);
+            bool splitOperations();
 
     protected:
 
