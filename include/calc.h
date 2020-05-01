@@ -12,10 +12,10 @@ class calc
 
         // Methods
             calc();
-            float getResult();
-            float getBuffer();
-            float getHistorial();
-            char[] getCurrentOperation();
+            float getResult() const;
+            float getBuffer() const;
+            float getHistorial() const;
+            char[] getCurrentOperation() const;
 
             void setResult(float r);
             void setBuffer(float b);
