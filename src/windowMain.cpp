@@ -19,7 +19,7 @@ windowMain::windowMain() :
         set_title("CPW Calc");
         set_default_size(200, 300);
         set_resizable(false);
-        set_icon_from_file("Logo-128x128.png");
+        set_icon_from_file("images/Logo-128x128.png");
 
     // Widgets set up
         itemFile.set_label("File");
@@ -335,7 +335,34 @@ void windowMain::on_click_div()
 void windowMain::on_click_iqual()
 {
     calc calcMain1;
-    std::cout << calcMain1.getBuffer() << "\n" << calcMain1.getResult() << "\n" << calcMain1.error;
+    calcMain1.setBuffer(1.1);
+    calcMain1.setResult(10.2);
+    calcMain1.setHistorial(20.3);
+
+    int sizeChar = txtCalcs.get_text_length();
+    calcMain1.currentOperation = new char[sizeChar];
+
+    Glib::ustring valor = txtCalcs.get_text();
+    char valor2[sizeChar];
+
+    std::cout << valor << " (" << sizeChar << "): \n";
+
+    for(int a = 0; a < 4; a++)
+    {
+        std::cout << "Valor " << a << ": " << valor[a] << "\n";
+        valor2[a] = valor[a];
+    }
+    std::cout << "Valor2: " << valor2 << "\n";
+    for(int a = 0; a < 4; a++)
+    {
+        std::cout << "Valor2 " << a << ": " << valor2[a] << "\n";
+    }
+
+
+    /*std::cout << "Buffer: " << calcMain1.getBuffer() << "\n ";
+    std::cout << "Resultado: " << calcMain1.getResult() << "\n ";
+    std::cout << "Error: " << calcMain1.error << "\n\n";
+    std::cout << "Historial: " << calcMain1.getHistorial() << "\n\n";*/
 }
 
 void windowMain::on_click_quit()
