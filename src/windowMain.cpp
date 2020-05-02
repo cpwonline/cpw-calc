@@ -335,18 +335,12 @@ void windowMain::on_click_div()
 void windowMain::on_click_iqual()
 {
     calc calcMain1;
-    calcMain1.setBuffer(1.1);
-    calcMain1.setResult(10.2);
-    calcMain1.setHistorial(20.3);
 
     int sizeChar = txtCalcs.get_text_length();
     Glib::ustring currentText = txtCalcs.get_text();
     char currentTextChar[sizeChar];
 
-    for(int a = 0; a < sizeChar; a++)
-    {
-        currentTextChar[a] = currentText[a];
-    }
+    for(int a = 0; a < sizeChar; a++) currentTextChar[a] = currentText[a];
 
     // Impresión
         std::cout << "Current: " << currentTextChar << "\n";
@@ -356,10 +350,19 @@ void windowMain::on_click_iqual()
     calcMain1.setCurrentOperation(currentTextChar);
 
         std::cout << "\nValor de currentOperation: " << calcMain1.getCurrentOperation() << "\n\n";
-        /*std::cout << "Buffer: " << calcMain1.getBuffer() << "\n ";
+        std::cout << "Buffer: " << calcMain1.getBuffer() << "\n ";
         std::cout << "Resultado: " << calcMain1.getResult() << "\n ";
         std::cout << "Error: " << calcMain1.error << "\n\n";
-        std::cout << "Historial: " << calcMain1.getHistorial() << "\n\n";*/
+        std::cout << "Historial: " << calcMain1.getHistorial() << "\n\n";
+
+    if(calcMain1.splitOperations())
+    {
+        txtCalcs.set_text(calcMain1.convertToChar(calcMain1.getResult());
+    }
+    else
+    {
+        txtCalcs.set_text("Syntax error");
+    }
 }
 
 void windowMain::on_click_quit()

@@ -28,6 +28,8 @@ class calc
             float divide(float a, float b);
             bool splitOperations();
 
+            char* convertToChar(float valor);
+
     protected:
 
     private:

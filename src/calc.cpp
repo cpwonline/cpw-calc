@@ -73,3 +73,7 @@
             return 0.0;
         }
     }
+    char* calc::convertToChar(float valor)
+    {
+
+    }
