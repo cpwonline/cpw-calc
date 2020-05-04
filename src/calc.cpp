@@ -146,20 +146,14 @@
     char* calc::storeValues(char op[], short *since, short sizeListOp2)
     {
         short until = *since + sizeListOp2;
-
-        std::cout << "\nEstamos en storeValues, since: " << *since << ", until: " << until << ", sizelistOp2: " << sizeListOp2 << "\n";
         char* listOp;
         listOp = new char[sizeListOp2];
         // Store values founded
             for(short a = 0; *since < until ; a++)
             {
-                std::cout << "Guardamos listOp[" << a << "]: " << op[*since] << "\n";
-                std::cout << "since: " << *since << ", until: " << until << "\n";
-
                 listOp[a] = op[*since]; // Store
                 *since = *since + 1;
             }
-            std::cout << "\n Retornamos: " << listOp << "\n";
 
         return listOp;
     }
