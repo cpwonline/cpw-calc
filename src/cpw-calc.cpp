@@ -7,7 +7,7 @@ int main (int argc, char *argv[])
 		Glib::RefPtr<Gtk::Application> mi_app = Gtk::Application::create(
 			argc,
 			argv,
-			"io.cpwonline.cpw-calc"
+			"net.cpwonline.cpw-calc"
 		);
 	// Creamos un objeto de la clase
 		windowMain mi_ventana1;
