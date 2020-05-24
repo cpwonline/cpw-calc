@@ -23,7 +23,7 @@
     {
         return historial;
     }
-    char* calc::getCurrentOperation() const
+    std::vector<char> calc::getCurrentOperation() const
     {
         return currentOperation;
     }
@@ -47,12 +47,7 @@
     }
     void calc::setCurrentOperation(char op[], short sizeChar)
     {
-        currentOperation = new char[sizeChar];
-        currentOperation = op;
-    }
-    void calc::setCurrentOperationSize(short sizeOp)
-    {
-        currentOperationSize = sizeOp;
+        for(int a = 0; a < sizeChar; a++) currentOperation.push_back(op[a]); 
     }
 
 // Members
@@ -82,10 +77,10 @@
     {
         char** listOp;
         short contCharOp = 0, sizeListOp = 0, sizeListOp2 = 0, contSigns = 0;
-        short contListOp = 0, since = 0, until = 0, sizeOp = getCurrentOperationSize();
+        short contListOp = 0, since = 0, until = 0, sizeOp = currentOperation.size();
 
         // verify how many symbols there is
-            contSigns = countSymbols(currentOperation, sizeOp);
+            contSigns = countSymbols();
 
         // Put the sublist size
             sizeListOp = contSigns * 2 + 1;
@@ -103,13 +98,13 @@
                     // Store values founded
                         listOp[contListOp] = new char[sizeListOp2];
 
-                        listOp[contListOp] = storeValues(currentOperation, &since, sizeListOp2);
+                        listOp[contListOp] = storeValues(&since, sizeListOp2);
 
                     // Store the symbol
                         contListOp++;
                         listOp[contListOp] = new char[1];
 
-                        listOp[contListOp] = storeValues(currentOperation, &since, 1);
+                        listOp[contListOp] = storeValues(&since, 1);
 
                         contListOp++;
 
@@ -124,7 +119,7 @@
                         // Sore values founded
                             listOp[contListOp] = new char[sizeListOp2];
 
-                            listOp[contListOp] = storeValues(currentOperation, &since, sizeListOp2);
+                            listOp[contListOp] = storeValues(&since, sizeListOp2);
                     }
             }while(contCharOp < sizeOp);
 
@@ -135,15 +130,15 @@
 
             return true;
     }
-    short calc::countSymbols(char op[], short sizeOp)
+    short calc::countSymbols()
     {
         short contSigns = 0;
-        for(int a = 0; a < sizeOp; a++)
-            if(op[a] == '+' || op[a] == '-' || op[a] == 'x' || op[a] == '/')
+        for(int a = 0; a < currentOperation.size(); a++)
+            if(currentOperation[a] == '+' || currentOperation[a] == '-' || currentOperation[a] == 'x' || currentOperation[a] == '/')
                 contSigns++;
         return contSigns;
     }
-    char* calc::storeValues(char op[], short *since, short sizeListOp2)
+    char* calc::storeValues(short *since, short sizeListOp2)
     {
         short until = *since + sizeListOp2;
         char* listOp;
@@ -151,7 +146,7 @@
         // Store values founded
             for(short a = 0; *since < until ; a++)
             {
-                listOp[a] = op[*since]; // Store
+                listOp[a] = currentOperation[*since]; // Store
                 *since = *since + 1;
             }
 

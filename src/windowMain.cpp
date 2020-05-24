@@ -345,7 +345,6 @@ void windowMain::on_click_iqual()
 
     // Store the Current Operation
         calcMain1.setCurrentOperation(currentTextChar, sizeChar);
-        calcMain1.setCurrentOperationSize(sizeChar);
 
     // Split the operations
         if(calcMain1.splitOperations())

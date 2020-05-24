@@ -2,6 +2,7 @@
 #define CALC_H
 
 #include <iostream>
+#include <vector>
 
 class calc
 {
@@ -14,22 +15,21 @@ class calc
             float getResult() const;
             float getBuffer() const;
             float getHistorial() const;
-            char* getCurrentOperation() const;
+            std::vector<char> getCurrentOperation() const;
             short getCurrentOperationSize() const;
 
             void setResult(float r);
             void setBuffer(float b);
             void setHistorial(float h);
             void setCurrentOperation(char op[], short sizeChar);
-            void setCurrentOperationSize(short sizeOp);
 
             float sum(float a, float b);
             float subtract(float a, float b);
             float multiplicate(float a, float b);
             float divide(float a, float b);
             bool splitOperations();
-            short countSymbols(char op[], short sizeOp);
-            char* storeValues(char op[], short *since, short sizeListOp2);
+            short countSymbols();
+            char* storeValues(short *since, short sizeListOp2);
 
     protected:
 
@@ -37,7 +37,7 @@ class calc
         float result;
         float buffer;
         float historial;
-        char* currentOperation;
+        std::vector<char> currentOperation;
         short currentOperationSize;
 };
 
