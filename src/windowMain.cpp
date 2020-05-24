@@ -19,7 +19,7 @@ windowMain::windowMain() :
         set_title("CPW Calc");
         set_default_size(200, 300);
         set_resizable(false);
-        set_icon_from_file("images/Logo-128x128.png");
+        //set_icon_from_file("images/Logo-128x128.png");
 
     // Widgets set up
         itemFile.set_label("File");

@@ -5,3 +5,7 @@ obj/
 *.layout
 *anjuta*
 *~
+*.geany
+build/
+Debug/
+Release/
