@@ -1,7 +1,7 @@
 #include "calc.h"
 #include <iostream>
 
-// Constructor
+// Constructor and destructor
     calc::calc()
     {
         setResult(0.00);
@@ -9,6 +9,10 @@
         setHistorial(0.00);
         error = false;
     }
+    calc::~calc()
+    {
+		
+	}
 
 // Getters
     float calc::getResult() const
@@ -127,6 +131,51 @@
 
             for(short a = 0; a < sizeListOp; a++)
                 std::cout << "-listOp[" << a << "]: " << listOp[a] << "\n";
+
+			std::cout << "\n* Pasando a los nuevos arrays--\n";
+			
+			char** listOp2;
+			bool end = false;
+			int a = 0;
+			do
+			{
+				short majObj = objPreGen.sizeArith;
+				if(listOp[a] == objPreGen.arithmeticOp[majObj])
+				{
+					double val1 = (double) listOp[a - 1];
+					double val2 = (double) listOp[a + 1];
+					double result;
+					
+					switch(objPreGen.arithmeticOp[majObj])
+					{
+						case '/':
+							result = val1 / val2;
+							break;
+					}
+
+					delete[] listOp[a - 1];
+					listOp[a - 1] = new char[3];
+					listOp[a - 1] = "NOT";
+					delete[] listOp[a + 1];
+					listOp[a + 1] = new char[3];
+					listOp[a + 1] = "NOT";
+					delete[] listOp[a];
+					listOp[a] = new double(result);
+
+					end = true;
+				}
+				a++;
+			}while(!end);
+			
+            std::cout << "\nSe guardó:\n";
+
+            for(short a = 0; a < sizeListOp; a++)
+                std::cout << "-listOp[" << a << "]: " << listOp[a] << "\n";
+
+			std::cout << "\n* Pasando a los nuevos arrays--\n";
+
+            for(short a = 0; a < sizeListOp; a++) delete[] listOp[a];
+			delete[] listOp[];
 
             return true;
     }

@@ -349,7 +349,6 @@ void windowMain::on_click_iqual()
     // Split the operations
         if(calcMain1.splitOperations())
         {
-            //txtCalcs.set_text(calcMain1.convertToChar(calcMain1.getResult()));
             std::cout << "Retornó true" << "\n";
         }
         else

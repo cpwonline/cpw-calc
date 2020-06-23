@@ -12,6 +12,7 @@ class calc
 
         // Methods
             calc();
+			~calc();
             float getResult() const;
             float getBuffer() const;
             float getHistorial() const;
@@ -39,6 +40,11 @@ class calc
         float historial;
         std::vector<char> currentOperation;
         short currentOperationSize;
+		struct opPrecedencie
+		{
+			short sizeArith = 4;
+			char arithmeticOp[4] = {'+', '-', 'x', '/'};
+		}objPreGen;
 };
 
 #endif // CALC_H
