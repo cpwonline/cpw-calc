@@ -133,7 +133,7 @@
                 std::cout << "-listOp[" << a << "]: " << listOp[a] << "\n";
 
 			std::cout << "\n* Pasando a los nuevos arrays--\n";
-			
+		/*
 			char** listOp2;
 			bool end = false;
 			int a = 0;
@@ -176,7 +176,7 @@
 
             for(short a = 0; a < sizeListOp; a++) delete[] listOp[a];
 			delete[] listOp[];
-
+	*/
             return true;
     }
     short calc::countSymbols()
