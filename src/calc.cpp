@@ -1,5 +1,6 @@
 #include "calc.h"
 #include <iostream>
+#include <cstdlib>
 
 // Constructor and destructor
     calc::calc()
@@ -100,13 +101,13 @@
                 else
                 {
                     // Store values founded
-                        listOp[contListOp] = new char[sizeListOp2];
+                        listOp[contListOp] = (char*)std::malloc[sizeListOp2];
 
                         listOp[contListOp] = storeValues(&since, sizeListOp2);
 
                     // Store the symbol
                         contListOp++;
-                        listOp[contListOp] = new char[1];
+                        listOp[contListOp] = (char*)std::malloc(1);
 
                         listOp[contListOp] = storeValues(&since, 1);
 
@@ -121,7 +122,7 @@
                     if(contCharOp == sizeOp)
                     {
                         // Sore values founded
-                            listOp[contListOp] = new char[sizeListOp2];
+                            listOp[contListOp] = (char*)std::malloc[sizeListOp2];
 
                             listOp[contListOp] = storeValues(&since, sizeListOp2);
                     }
@@ -173,10 +174,11 @@
                 std::cout << "-listOp[" << a << "]: " << listOp[a] << "\n";
 
 			std::cout << "\n* Pasando a los nuevos arrays--\n";
-
-            for(short a = 0; a < sizeListOp; a++) delete[] listOp[a];
-			delete[] listOp[];
-	*/
+*/
+            for(short a = 0; a < sizeListOp; a++) std::free(listOp[a]);
+			
+			delete[] listOp;
+	
             return true;
     }
     short calc::countSymbols()
