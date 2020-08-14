@@ -7,5 +7,5 @@ obj/
 *~
 *.geany
 build/
-Debug/
+[D-d]ebug/
 Release/
