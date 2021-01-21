@@ -9,3 +9,4 @@ obj/
 build/
 [D-d]ebug/
 Release/
+*.log*
