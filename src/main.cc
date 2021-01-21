@@ -1,18 +1,18 @@
 #include "windowMain.h"
 #include <gtkmm/application.h>
-//#include "Config.h
+#include "Config.h"
 
 int main (int argc, char *argv[])
 {
 	// Creamos la aplicación
-		Glib::RefPtr<Gtk::Application> mi_app = Gtk::Application::create(
+		auto mApp = Gtk::Application::create(
 			argc,
 			argv,
-			"net.cpwonline.cpw-calc"
+			"org.cpwonline.cpw-calc"
 		);
 	// Creamos un objeto de la clase
-		windowMain mi_ventana1;
+		windowMain mWindow;
 
 	//Mostramos la ventana y retornamos cuando se cierre
-		return mi_app->run(mi_ventana1);
+		return mApp->run(mWindow);
 }

@@ -210,10 +210,15 @@ windowMain::~windowMain()
 }
 
 /* Manejadores de señal */
-void windowMain::on_click_0()
+void windowMain::on_click_operation(std::string operation_type)
 {
     if(txtCalcs.get_text() != "0")
-        txtCalcs.set_text(txtCalcs.get_text() + "0");
+		if(operation_type == "0")
+			txtCalcs.set_text(txtCalcs.get_text() + "0");
+		else if(operation_type == "1")
+		{
+			
+		}
 }
 void windowMain::on_click_1()
 {

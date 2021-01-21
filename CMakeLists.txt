@@ -1,19 +1,56 @@
-# Project
+# Basic
 cmake_minimum_required(VERSION 3.10)
-project(cpw_calc VERSION 1.0)
-
-configure_file(cpw_calcConfig.h.in cpw_calcConfig.h)
-
-# C++ Standards
-set(CMAKE_CXX_STANDARD 11)
+project("cpw-calc" VERSION 0.0.1)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Compiler
-SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall --std=c11")
+# Build type
+if(NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE Release)
+endif()
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
-# Adding directories
+# Compiler options
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
-set(HEADER ${CMAKE_SOURCE_DIR}/include)
-include_directories(include)
-add_subdirectory(src)
+# Main executable and config file
+add_executable(${PROJECT_NAME} "src/main.cc")
+configure_file(Config.h.in Config.h)
 
+# Use PkgConfig
+include(FindPkgConfig)
+find_package(PkgConfig REQUIRED)
+pkg_search_module(GTKMM REQUIRED gtkmm-3.0)
+
+# Add and linking libraries
+## Library
+add_library(Library1 SHARED "src/library1.cc")
+target_include_directories(Library1 PUBLIC include)
+## Library
+add_library(Library2 SHARED "src/library2.cc")
+target_include_directories(Library2 PUBLIC include ${GTKMM_INCLUDE_DIRS})
+target_link_libraries(Library2 ${GTKMM_LIBRARIES})
+
+# Add and linking libraries for Executable
+target_include_directories(${PROJECT_NAME} PUBLIC include)
+target_link_libraries(${PROJECT_NAME} PUBLIC Library1 Library2)
+
+# Install rules
+install(TARGETS Library1 DESTINATION lib)
+install(TARGETS Library2 DESTINATION lib)
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+install(FILES "include/flibrary1.h" DESTINATION include)
+install(FILES "include/library2.h" DESTINATION include)
+install(FILES "${PROJECT_BINARY_DIR}/Config.h" DESTINATION include)
+
+# Set up prefix
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+	set(CMAKE_INSTALL_PREFIX "/usr/local" CACHE PATH "..." FORCE)
+endif()
+
+# Tests
+enable_testing()
+add_executable(test_main "tests/test_main.cc")
+add_test(nombre_del_test test_main)
