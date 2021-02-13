@@ -1,0 +1,7 @@
+// Version
+	#define CPW_CALC_VERSION_MAJOR @cpw-calc_VERSION_MAJOR@
+	#define CPW_CALC_VERSION_MINOR @cpw-calc_VERSION_MINOR@
+	#define CPW_CALC_VERSION_PATCH @cpw-calc_VERSION_PATCH@
+	
+// Variables
+	#define DATADIR @CMAKE_INSTALL_DATADIR@

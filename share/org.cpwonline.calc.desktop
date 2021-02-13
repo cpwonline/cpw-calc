@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CPW Calc
+Type=Application
+Exec=cpw-calc
+Terminal=false
+Icon=cpw-calc_128x128.png
+Comment=Fast and simple calculator
+NoDisplay=false
+Categories=Accesories;

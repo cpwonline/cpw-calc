@@ -1,6 +1,6 @@
+#include "cpw-calcConfig.h"
 #include "windowMain.h"
 #include <gtkmm/application.h>
-//#include "Config.h
 
 int main (int argc, char *argv[])
 {
